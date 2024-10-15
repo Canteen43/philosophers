@@ -1,0 +1,12 @@
+Concerning fork distribution, even numbers of philosophers are easy:
+First the odds can eat, then the evens.
+
+With odd numbers of philosophers it is harder. But my idea is:
+First the odds can eat, except the last one.
+From the eating rotates one position further every time.
+So in round 2 the evens can eat.
+In round 3 the odds can eat, except the first one.
+And so on.
+There will be different combinations equal to the number of philosophers.
+Wait time between eating will mostly be one eating duration and sometimes 
+two eating durations.
