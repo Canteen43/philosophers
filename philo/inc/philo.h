@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/22 21:05:15 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/25 21:47:15 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 	// pthread_mutex_lock(), pthread_mutex_unlock()
 
 // Macros
-# define EXAMPLE "example"
+# define WRONG_ARG "Wrong argument format. Use: ./philo number_of_philosophers" \
+					" time_to_die time_to_eat time_to_sleep" \
+					" [number_of_times_each_philosopher_must_eat]"
 
 // Main struct
 typedef struct s_main
@@ -33,7 +35,18 @@ typedef struct s_main
 	int						time_to_eat;
 	int						time_to_sleep;
 	int						must_eat;
+	struct timeeval			current_time;
 }							t_main;
+
+typedef struct s_philosopher
+{
+	int						philo_nbr;
+}							t_philo;
+
+typedef struct s_fork
+{
+	int						fork_nbr;
+}							t_fork;
 
 // Function declarations
 

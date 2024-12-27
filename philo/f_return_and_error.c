@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   f_return_and_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 20:54:28 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/25 21:21:02 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/25 21:25:36 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/25 21:33:33 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+/*Writes a given message to STDERR and then returns given return_code.*/
+int	f_return_and_error(int return_code, char *message)
 {
-	t_main	main;
-
-	if (argc != 5 && argc != 6)
-		return (1);
-	if (f_read_args(&main, argv) == -1)
-		return (1);
-	if (f_create_philos(&main) == -1)
-		return (1);
+	write(STDERR_FILENO, message, f_strlen(message));
+	return (return_code);
 }

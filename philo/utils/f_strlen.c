@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_init.c                                           :+:      :+:    :+:   */
+/*   f_strlen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 21:07:47 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/22 21:09:45 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/25 21:28:20 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/25 21:32:01 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	f_init(t_main *main, char** argv)
+/*Returns the length of a str. Similar to strlen. Returns 0 for invalid strings.
+*/
+size_t	f_strlen(char *str)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
-	while ()
-	if (argv[5])
+	len = 0;
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		len++;
+		str++;
+	}
+	return (len);
+}

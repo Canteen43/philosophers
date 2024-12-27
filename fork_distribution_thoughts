@@ -10,3 +10,13 @@ And so on.
 There will be different combinations equal to the number of philosophers.
 Wait time between eating will mostly be one eating duration and sometimes 
 two eating durations.
+
+How do I solve the printing problem?:
+- chatgpt says that mutexes do the trick
+- I am allowed to use printf
+
+Can philosophers die while eating?
+- Yes they can. Time_to_die counts from start of meal to start of meal
+
+Attention!
+- I have to handle negative or zero arguments.
