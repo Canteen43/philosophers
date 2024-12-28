@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/28 15:17:21 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:51:37 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,15 @@ typedef struct s_main
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat;
-	struct timeeval	current_time;
 	pthread_mutex_t	**forks;
+	pthread_t		**philos;
+}					t_main;
+
+// Philosopher struct
+typedef struct s_main
+{
+	int				id;
+	t_main			*main;
 }					t_main;
 
 // Function declarations
