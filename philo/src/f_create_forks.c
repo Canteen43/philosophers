@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   f_create_forks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 20:54:28 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/28 14:59:26 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/28 15:00:22 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/28 15:16:56 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	f_create_forks(t_main *main)
 {
-	t_main	main;
+	pthread_mutex_t	mutex;
+	int				i;
 
-	if (f_read_args(&main, argv) == -1)
-		return (1);
-	if (main.must_eat == 0)
-		return (0);
-	f_create_forks(&main);
-	if (f_create_philos(&main) == -1)
-		return (1);
+	i = 0;
+	while (i < main->nbr_philos)
+	{
+		pthread_mutex_init(&mutex, NULL);
+		main->forks[i] = mutex;
+		i++;
+	}
 }

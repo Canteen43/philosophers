@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/28 14:54:38 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/28 15:17:21 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_main
 	int				time_to_sleep;
 	int				must_eat;
 	struct timeeval	current_time;
-	pthread_mutex_t
+	pthread_mutex_t	**forks;
 }					t_main;
 
 // Function declarations
