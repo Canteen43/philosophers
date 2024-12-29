@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:58:08 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/29 21:10:50 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # include <limits.h>
 
 // Macros
-# define WRONG_ARGS "Wrong arguments. Try: nbr die eat sleep (must_eat)"
+# define WRONG_ARGS "Bad args. Use ints > 0. nbr die eat sleep (must_eat)\n"
 # define FORK "has taken a fork"
 # define EAT "is eating"
 # define SLEEP "is sleeping"
@@ -46,7 +46,7 @@ typedef struct s_main
 	int						time_to_eat;
 	int						time_to_sleep;
 	int						must_eat;
-	struct timeval			*starting_time;
+	struct timeval			starting_time;
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			print_lock;
 	pthread_mutex_t			full_philos_lock;
