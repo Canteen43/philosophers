@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_join_philos.c                                    :+:      :+:    :+:   */
+/*   f_time_diff_ms.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:39:36 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:37:36 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/29 14:28:18 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/29 14:28:52 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_join_philos(t_main *main)
+int	f_time_diff_ms(struct timeval *later, struct timeval *earlier)
 {
-	int	i;
+	int	result;
 
-	i = 0;
-	while (i < main->nbr_philos)
-	{
-		pthread_join(main->philos[i].thread, NULL);
-		i++;
-	}
-	free(main->philos);
+	result = (later->tv_sec - earlier->tv_sec) * 1000 + (later->tv_usec
+			- earlier->tv_usec) / 1000 return (result);
+	return (result);
 }

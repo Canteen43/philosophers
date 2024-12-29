@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_join_philos.c                                    :+:      :+:    :+:   */
+/*   f_release_forks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:39:36 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:37:36 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/29 13:08:50 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/29 13:09:59 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_join_philos(t_main *main)
+void	f_release_forks(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (i < main->nbr_philos)
-	{
-		pthread_join(main->philos[i].thread, NULL);
-		i++;
-	}
-	free(main->philos);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }

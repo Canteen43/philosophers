@@ -6,24 +6,36 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:17:33 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/28 16:41:09 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:36:28 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*f_execute_philo(void *main)
+void	*f_execute_philo(void *input)
 {
-	int				philo_id;
-	pthread_mutex_t	fork_left;
-	pthread_mutex_t	fork_right;
+	t_philo	*philo;
 
-	philo_id = main->philo_id;
-	if (philo_id % 2 == 1)
-		usleep(main->time_to_eat);
-	f_attempt_taking_fork(fork_left);
-	f_attempt_taking_fork(fork_right);
-	f_eat();
-	f_sleep();
-	f_think();
+	philo = (t_philo *)input;
+	if (philo->id % 2 == 1)
+		usleep(philo->main->time_to_eat);
+	while (1)
+	{
+		f_take_forks(philo);
+		if (f_termination_condition_met(philo->main))
+		{
+			f_release_forks(philo);
+			break ;
+		}
+		f_eat(philo);
+		f_release_forks(philo);
+		f_increase_meal_count(philo);
+		if (f_termination_condition_met(philo->main))
+			break ;
+		f_sleep(philo);
+		if (f_termination_condition_met(philo->main))
+			break ;
+		f_think(philo);
+	}
+	return (NULL);
 }

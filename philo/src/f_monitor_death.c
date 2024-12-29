@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_join_philos.c                                    :+:      :+:    :+:   */
+/*   f_monitor_death.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:39:36 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:37:36 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/29 14:17:59 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/29 14:32:58 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_join_philos(t_main *main)
+void	f_monitor_death(t_main *main)
 {
-	int	i;
+	int				i;
+	struct timeeval	current_time;
 
 	i = 0;
-	while (i < main->nbr_philos)
+	while (1)
 	{
-		pthread_join(main->philos[i].thread, NULL);
+		if (main->full_philos_count == main->nbr_philos)
+			break ;
+		gettimeofday(current_time, NULL);
+		if (f_time_diff_ms(current_time,
+				main->philos[i]->last_meal) > main->time_to_die)
+		{
+			f_print_state(main->philos[i], DEATH);
+			main->philo_died = true;
+			break ;
+		}
 		i++;
+		if (i == main->nbr_philos)
+			i = 0;
 	}
-	free(main->philos);
 }

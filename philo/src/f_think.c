@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_join_philos.c                                    :+:      :+:    :+:   */
+/*   f_think.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:39:36 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:37:36 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/29 13:13:33 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/29 13:14:25 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_join_philos(t_main *main)
+void	f_think(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (i < main->nbr_philos)
-	{
-		pthread_join(main->philos[i].thread, NULL);
-		i++;
-	}
-	free(main->philos);
+	f_print_state(philo, THINK);
 }

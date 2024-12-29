@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_join_philos.c                                    :+:      :+:    :+:   */
+/*   f_termination_condition_met.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:39:36 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:37:36 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/29 13:31:29 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/29 14:34:10 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_join_philos(t_main *main)
+bool	f_termination_condition_met(t_main *main)
 {
-	int	i;
-
-	i = 0;
-	while (i < main->nbr_philos)
-	{
-		pthread_join(main->philos[i].thread, NULL);
-		i++;
-	}
-	free(main->philos);
+	if (main->philo_died)
+		return (true);
+	if (main->full_philos_count == main->nbr_philos)
+		return (true);
+	return (false);
 }

@@ -20,6 +20,28 @@ SRC_DIR			:= src/
 
 # Source files
 SRC_FILES		+= main.c
+SRC_FILES		+= f_create_forks.c
+SRC_FILES		+= f_create_philos.c
+SRC_FILES		+= f_destroy_forks.c
+SRC_FILES		+= f_eat.c
+SRC_FILES		+= f_execute_philo.c
+SRC_FILES		+= f_increase_meal_count.c
+SRC_FILES		+= f_join_philos.c
+SRC_FILES		+= f_monitor_death.c
+SRC_FILES		+= f_print_state.c
+SRC_FILES		+= f_read_args.c
+SRC_FILES		+= f_release_forks.c
+SRC_FILES		+= f_return_and_error.c
+SRC_FILES		+= f_sleep.c
+SRC_FILES		+= f_take_forks.c
+SRC_FILES		+= f_termination_condition_met.c
+SRC_FILES		+= f_think.c
+SRC_FILES		+= f_time_diff_ms.c
+
+SRC_FILES		+= utils/f_strlen.c
+SRC_FILES		+= utils/f_strtoi.c
+
+
 
 # Object files directory
 OBJ_DIR			:= obj/

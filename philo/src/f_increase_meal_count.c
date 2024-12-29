@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_join_philos.c                                    :+:      :+:    :+:   */
+/*   f_increase_meal_count.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:39:36 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:37:36 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/29 13:23:47 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/29 15:36:52 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_join_philos(t_main *main)
+void	f_increase_meal_count(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (i < main->nbr_philos)
+	philo->times_eaten++;
+	if (philo->times_eaten == philo->main->must_eat)
 	{
-		pthread_join(main->philos[i].thread, NULL);
-		i++;
+		pthread_mutex_lock(philo->main->full_philos_lock);
+		philo->main->full_philos_count++;
+		pthread_mutex_unlock(philo->main->full_philos_lock);
 	}
-	free(main->philos);
 }
