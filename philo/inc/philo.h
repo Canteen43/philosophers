@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:54:52 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:58:08 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ typedef struct s_main
 	int						must_eat;
 	struct timeval			*starting_time;
 	pthread_mutex_t			*forks;
-	pthread_mutex_t			*print_lock;
-	pthread_mutex_t			*full_philos_lock;
+	pthread_mutex_t			print_lock;
+	pthread_mutex_t			full_philos_lock;
 	struct s_philosophers	*philos;
 	int						full_philos_count;
 	bool					philo_died;
