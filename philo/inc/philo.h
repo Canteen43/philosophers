@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:39:07 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:54:52 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <unistd.h>
 // For true, false
 # include <stdbool.h>
+// For INTMAX, INTMIN
+# include <limits.h>
 
 // Macros
 # define WRONG_ARGS "Wrong arguments. Try: nbr die eat sleep (must_eat)"
@@ -84,4 +86,6 @@ int							f_time_diff_ms(struct timeval *later,
 								struct timeval *earlier);
 void						f_monitor_death(t_main *main);
 void						f_increase_meal_count(t_philo *philo);
+int							f_strtoi(char *str, int *num);
+size_t						f_strlen(char *str);
 #endif // PHILO_H

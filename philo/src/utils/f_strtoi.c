@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_strtoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:34:53 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/25 19:39:05 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:47:42 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	fl_lmt_check(int value, char next);
 Errors include: non-digit characters, multiple minuses, number outside of INT
 limits, and empty strings.
 Ignores leading whitespace (' ' and '\t'), accepts one minus.*/
-int	fl_strtoi(char *str, int *num)
+int	f_strtoi(char *str, int *num)
 {
 	int	sign;
 
