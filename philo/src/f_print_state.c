@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 12:14:09 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/30 10:23:46 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/30 14:19:35 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	f_print_state(t_philo *philo, char *state)
 	struct timeval	current_time;
 	int				time_diff;
 
-	if (philo->main->philo_died
-		|| philo->main->full_philos_count == philo->main->nbr_philos)
+	if (f_philo_died(philo->main) || f_philos_full(philo->main))
 		return ;
 	gettimeofday(&current_time, NULL);
 	time_diff = f_time_diff_ms(&current_time, &philo->main->starting_time);
