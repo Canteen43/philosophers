@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 14:17:59 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 15:46:29 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/30 14:11:43 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,40 @@
 
 void	f_monitor_death(t_main *main)
 {
-	int				i;
-	struct timeval	current_time;
+	int	i;
 
 	i = 0;
 	while (1)
 	{
-		if (main->full_philos_count == main->nbr_philos)
+		if (f_philos_full(main))
 			break ;
-		gettimeofday(&current_time, NULL);
-		if (f_time_diff_ms(&current_time,
-				&main->philos[i].last_meal) > main->time_to_die)
-		{
-			f_print_state(&main->philos[i], DEATH);
-			main->philo_died = true;
+		if (sf_check_for_death(main, &main->philos[i]))
 			break ;
-		}
 		i++;
 		if (i == main->nbr_philos)
+		{
 			i = 0;
+			usleep(100);
+		}
 	}
+}
+
+bool	sf_check_for_death(t_main *main, t_philo *philo)
+{
+	struct timeval	current_time;
+	struct timeval	meal_time;
+
+	gettimeofday(&current_time, NULL);
+	pthread_mutex_lock(main->last_meal_lock);
+	meal_time = philo.last_meal;
+	pthread_mutex_unlock(main->last_meal_lock);
+	if (f_time_diff_ms(&current_time, &meal_time) > main->time_to_die)
+	{
+		pthread_mutex_lock(&main->death_lock);
+		main->philo_died = true;
+		pthread_mutex_unlock(&main->death_lock);
+		f_print_state(philo, DEATH);
+		return (true);
+	}
+	return (false);
 }

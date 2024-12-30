@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:54:37 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 21:10:50 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/30 13:55:23 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_main
 	pthread_mutex_t			*forks;
 	pthread_mutex_t			print_lock;
 	pthread_mutex_t			full_philos_lock;
+	pthread_mutex_t			death_lock;
+	pthread_mutex_t			last_meal_lock;
 	struct s_philosophers	*philos;
 	int						full_philos_count;
 	bool					philo_died;
@@ -88,4 +90,6 @@ void						f_monitor_death(t_main *main);
 void						f_increase_meal_count(t_philo *philo);
 int							f_strtoi(char *str, int *num);
 size_t						f_strlen(char *str);
+bool						f_philo_died(t_main *main);
+bool						f_philos_full(t_main *main);
 #endif // PHILO_H

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_destroy_forks.c                                  :+:      :+:    :+:   */
+/*   f_philo_died.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 15:00:22 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/30 10:51:25 by kweihman         ###   ########.fr       */
+/*   Created: 2024/12/30 13:39:52 by kweihman          #+#    #+#             */
+/*   Updated: 2024/12/30 13:48:23 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	f_destroy_forks(t_main *main)
+bool	f_philo_died(t_main *main)
 {
-	int				i;
+	bool	result;
 
-	i = 0;
-	while (i < main->nbr_philos)
-	{
-		pthread_mutex_destroy(&main->forks[i]);
-		i++;
-	}
-	free(main->forks);
+	result = false;
+	pthread_mutex_lock(&main->death_lock);
+	if (main->philo_died)
+		result = true;
+	pthread_mutex_unlock(&main->death_lock);
+	return (result);
 }

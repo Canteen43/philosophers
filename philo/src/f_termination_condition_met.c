@@ -6,7 +6,7 @@
 /*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 13:31:29 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 14:34:10 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/30 13:51:20 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 bool	f_termination_condition_met(t_main *main)
 {
-	if (main->philo_died)
+	if (f_philo_died(main))
 		return (true);
-	if (main->full_philos_count == main->nbr_philos)
+	if (f_philos_full(main))
 		return (true);
 	return (false);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_print_state.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kweihman <kweihman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: kweihman <kweihman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 12:14:09 by kweihman          #+#    #+#             */
-/*   Updated: 2024/12/29 22:11:08 by kweihman         ###   ########.fr       */
+/*   Updated: 2024/12/30 10:23:46 by kweihman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	f_print_state(t_philo *philo, char *state)
 	struct timeval	current_time;
 	int				time_diff;
 
-	if (philo->main->philo_died)
+	if (philo->main->philo_died
+		|| philo->main->full_philos_count == philo->main->nbr_philos)
 		return ;
 	gettimeofday(&current_time, NULL);
 	time_diff = f_time_diff_ms(&current_time, &philo->main->starting_time);

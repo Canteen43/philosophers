@@ -37,6 +37,8 @@ SRC_FILES		+= f_take_forks.c
 SRC_FILES		+= f_termination_condition_met.c
 SRC_FILES		+= f_think.c
 SRC_FILES		+= f_time_diff_ms.c
+SRC_FILES		+= f_philos_full.c
+SRC_FILES		+= f_philo_died.c
 
 SRC_FILES		+= utils/f_strlen.c
 SRC_FILES		+= utils/f_strtoi.c
@@ -67,7 +69,18 @@ TOUCH			:= /bin/touch
 #### DEBUG SETTINGS ####
 
 ifeq ($(DEBUG), 1)
+	CFLAGS := $(filter-out -O3, $(CFLAGS))
 	CFLAGS		+= -g3 -O0
+endif
+
+ifeq ($(DEBUG), 2)
+	CFLAGS := $(filter-out -O3, $(CFLAGS))
+	CFLAGS		+= -g3 -O0 -fsanitize=thread
+endif
+
+ifeq ($(DEBUG), 3)
+	CFLAGS := $(filter-out -O3, $(CFLAGS))
+	CFLAGS		+= -g3 -O0 -fsanitize=address
 endif
 
 #### TARGET COMPILATION ####
