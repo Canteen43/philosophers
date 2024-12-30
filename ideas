@@ -1,3 +1,0 @@
-Each philosopher is one process.
-
-Each fork is a mutex.
