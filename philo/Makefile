@@ -4,7 +4,7 @@
 CC				:= cc
 
 # Compiler flags
-CFLAGS			:= -Wall -Werror -Wextra -pedantic -O3 -pthread
+CFLAGS			:= -Wall -Werror -Wextra -O3 -pthread
 
 # Libraries to be linked (if any)
 LIBS			:=
@@ -39,9 +39,8 @@ SRC_FILES		+= f_think.c
 SRC_FILES		+= f_time_diff_ms.c
 SRC_FILES		+= f_philos_full.c
 SRC_FILES		+= f_philo_died.c
-
-SRC_FILES		+= utils/f_strlen.c
-SRC_FILES		+= utils/f_strtoi.c
+SRC_FILES		+= f_strlen.c
+SRC_FILES		+= f_strtoi.c
 
 
 

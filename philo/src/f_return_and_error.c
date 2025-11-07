@@ -15,6 +15,9 @@
 /*Writes a given message to STDERR and then returns given return_code.*/
 int	f_return_and_error(int return_code, char *message)
 {
-	write(STDERR_FILENO, message, f_strlen(message));
+	int ret;
+
+	ret = write(STDERR_FILENO, message, f_strlen(message));
+	(void)ret;
 	return (return_code);
 }
